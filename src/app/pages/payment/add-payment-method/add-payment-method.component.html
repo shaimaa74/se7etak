@@ -1,0 +1,81 @@
+<div class=" header bg-primary pb-6">
+
+    <div class=" container-fluid">
+      <div class=" header-body">
+        <div class=" row align-items-center py-4">
+          <div class=" col-lg-6 col-7">
+            <h6 class=" h2 text-white d-inline-block mb-0">Payment Methods</h6>
+            <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+              <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class=" breadcrumb-item">
+                  <a [routerLink]="'/tests'"> <i class=" fas fa-home"> </i> </a>
+                </li>
+  
+                <li class=" breadcrumb-item">
+                  <a [routerLink]="'/paymentMethods'"> Methods </a>
+                </li>
+
+                <li aria-current="page" class=" breadcrumb-item active">
+                  Add Method
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class=" container-fluid mt--6">
+    <div class=" card mb-4">
+      <div class=" card-body">
+  
+        <div class="row">
+  
+          <div class=" col-md-6">
+            <div class=" form-group">
+              <label class=" form-control-label" for="payment-method-name">
+                Payment Method Name
+              </label>
+  
+              <input class=" form-control" id="payment-method-name" [(ngModel)]="paymentMethod.Paymentmethod"
+                placeholder="Payment Method Name" type="text" />
+            </div>
+          </div>
+          <div class=" col-md-6">
+            <div class=" form-group">
+              <label class=" form-control-label" for="fixed-commission">
+                Fixed Commission
+              </label>
+  
+              <input class=" form-control" id="fixed-commission" [(ngModel)]="paymentMethod&& paymentMethod.Fixedcommission"
+                placeholder="Commission" type="number" min="0" />
+            </div>
+          </div>
+         
+        </div>
+  
+        <div class="row">
+            <div class=" col-md-6">
+                <div class=" form-group">
+                  <label class=" form-control-label" for="commission-ratio">
+                    Commission Ratio
+                  </label>
+      
+                  <input class=" form-control" id="commission-ratio" [(ngModel)]="paymentMethod&& paymentMethod.Commissionratio"
+                    placeholder="Commission Ratio" type="number" min="0.1" step="0.1"/>
+                </div>
+              </div>
+        </div>
+  
+        <div class="row">
+          <div class="col btns-block">
+            <button class=" btn btn-primary" type="button"
+              (click)="onAddPaymentMethod()">{{editMode ? 'Edit': 'Save'}}</button>
+            <button class=" btn btn-outline-danger" type="button" [routerLink]="'/paymentMethods'">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

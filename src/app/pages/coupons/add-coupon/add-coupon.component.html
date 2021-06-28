@@ -1,0 +1,174 @@
+<div class=" header bg-primary pb-6">
+
+    <div class=" container-fluid">
+      <div class=" header-body">
+        <div class=" row align-items-center py-4">
+          <div class=" col-lg-6 col-7">
+            <h6 class=" h2 text-white d-inline-block mb-0">Coupons</h6>
+            <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+              <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class=" breadcrumb-item">
+                  <a [routerLink]="'/tests'"> <i class=" fas fa-home"> </i> </a>
+                </li>
+  
+                <li class=" breadcrumb-item">
+                  <a [routerLink]="'/coupons'"> Coupons </a>
+                </li>
+  
+                <li aria-current="page" class=" breadcrumb-item active">
+                  Add Coupon
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class=" container-fluid mt--6">
+    <div class=" card mb-4">
+      <div class=" card-body">
+  
+        <div class="row">
+  
+          <div class=" col-md-6">
+            <div class=" form-group">
+              <label class=" form-control-label" for="coupon-name">
+                Coupon Name
+              </label>
+  
+              <input class=" form-control" id="coupon-name" [(ngModel)]="coupon.couponName"
+                placeholder="Coupon Name" type="text" [disabled]="disabled" />
+            </div>
+          </div>
+          <div class=" col-md-6">
+            <div class=" form-group">
+              <label class=" form-control-label" for="coupon-code">
+                Coupon Code
+              </label>
+  
+              <input class=" form-control" id="coupon-code" [(ngModel)]="coupon.couponCode"
+                placeholder="Coupon Code" type="text" [disabled]="disabled" />
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6">
+            <div class=" form-group">
+              <label class="form-control-label" for="coupon-type">
+                Type
+              </label>
+
+              <select [(ngModel)]="coupon.couponType" class=" form-control" id="coupon-type" [disabled]="disabled">
+                <option> Single Use </option>
+                <option> Once Per Customer </option>
+                <option> Unlimited </option>
+              </select>
+            </div>
+          </div>
+          <div class=" col-md-6">
+            <div class=" form-group">
+              <label class="form-control-label" for="coupon-classification">
+                Classification
+              </label>
+  
+              <select [(ngModel)]="coupon.couponClass" class=" form-control" id="coupon-classification" [disabled]="disabled">
+                <option> Normal </option>
+                <option> Se7etak </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+              <div class=" form-group">
+                <label class="form-control-label" for="coupon-startDate">
+                  Start Date
+                </label>
+  
+                <input type="text" class="form-control" bsDatepicker [(ngModel)]="coupon.startDate" [bsConfig]="{
+                    isAnimated: true,
+                    containerClass: 'theme-blue'
+                  }" name="bsDatepicker" [disabled]="disabled" />
+              </div>
+            </div>
+            <div class=" col-md-6">
+              <div class=" form-group">
+                <label class="form-control-label" for="coupon-endDate">
+                  End Date
+                </label>
+    
+                <!-- (change)="endDateChange($event)" -->
+                <input type="text" class="form-control" bsDatepicker [(ngModel)]="coupon.endDate" [bsConfig]="{
+                    isAnimated: true,
+                    containerClass: 'theme-blue'
+                  }" name="bsDatepicker" />   
+              </div>
+            </div>
+          </div>
+
+  
+          <div class="row">
+  
+            <div class=" col-md-6">
+              <div class=" form-group">
+                <label class=" form-control-label" for="coupon-discount">
+                  Discount Percentage
+                </label>
+    
+                <input class=" form-control" id="coupon-discount" [(ngModel)]="coupon.discountPercentage"
+                  placeholder="Discount Percentage" type="number" min="0" max="100" [disabled]="disabled"
+                  (change)="onDiscountChange($event)"/>
+              </div>
+            </div>
+            <div class=" col-md-6">
+              <div class=" form-group">
+                <label class=" form-control-label" for="coupon-amount">
+                  Amount
+                </label>
+    
+                <input class=" form-control" id="coupon-amount" [(ngModel)]="coupon.amount"
+                  placeholder="Amount" type="number" min="0" [disabled]="disabled"
+                  (change)="onAmountChange($event)" />
+              </div>
+            </div>
+           
+          </div>
+
+        <div class="row">
+          <div class=" col">
+            <div class=" form-group">
+                <label class=" form-control-label" for="coupon-speciality">
+                    Speciality
+                </label>
+      
+                <!-- <select [(ngModel)]="coupon.couponNameType" class=" form-control" id="coupon-speciality"
+                        [disabled]="disabled">
+                    <option *ngFor="let spec of specialities" [value]="spec.id"> {{spec.name}} </option>
+                </select> -->
+
+                <select [(ngModel)]="coupon.couponNameType" class=" form-control" id="coupon-speciality"
+                         multiple="multiple" size="1" [disabled]="disabled">
+                    <option *ngFor="let spec of specialities" [value]="spec.id"> {{spec.name}} </option>
+                </select>
+
+            </div>
+  
+          </div>
+  
+        </div>
+  
+        <div class="row">
+          <div class="col btns-block">
+            <button class=" btn btn-primary" type="button"
+              (click)="onAddNewCoupon()">{{editMode ? 'Edit': 'Save'}}</button>
+            <button class=" btn btn-outline-danger" type="button" [routerLink]="'/coupons'">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
